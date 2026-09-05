@@ -430,6 +430,12 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
   font-size: 16px;
 }
 
+/* Estilo especial para la frase destacada */
+.frase-destacada {
+  font-style: italic; /* Letras inclinadas */
+  text-indent: 28px;  /* Espacio al inicio (sangría) */
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -707,6 +713,39 @@ html[data-theme="oscuro"] .foot-map iframe {
   gap: 14px;
   color: var(--muted);
   font-size: 13.5px;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  background: var(--blue-500);
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px var(--shadow);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .2s, transform .2s, visibility .2s;
+  z-index: 60;
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .note {

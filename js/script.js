@@ -71,6 +71,21 @@
   });
 })();
 
+// ---- 3b. Botón "Volver arriba" (hasta el índice) ----
+(function () {
+  const btn = document.getElementById('backToTop');
+  const toc = document.getElementById('toc');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 500);
+  });
+
+  btn.addEventListener('click', () => {
+    (toc || document.body).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+
 // ---- 4. Formulario de Contacto (Mockup) ----
 (function () {
   const form = document.getElementById('contactForm');
