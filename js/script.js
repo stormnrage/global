@@ -49,6 +49,58 @@
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', cerrarMenu));
 })();
 
+// ---- 2b. Slider principal (hero) ----
+(function () {
+  const root = document.getElementById('heroSlider');
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll('.slide'));
+  const dotsWrap = root.querySelector('.slider-dots');
+  const prevBtn = root.querySelector('.slider-btn.prev');
+  const nextBtn = root.querySelector('.slider-btn.next');
+  let current = slides.findIndex((s) => s.classList.contains('is-active'));
+  if (current < 0) current = 0;
+  let timer;
+
+  // Si el archivo de foto existe (data-bg), la usa como fondo; si no, queda el degradé.
+  slides.forEach((slide) => {
+    const bg = slide.getAttribute('data-bg');
+    if (!bg) return;
+    const test = new Image();
+    test.onload = () => { slide.style.backgroundImage = `url('${bg}')`; };
+    test.src = bg;
+  });
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === current) dot.classList.add('is-active');
+    dot.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function goTo(index) {
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+    restart();
+  }
+
+  function restart() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5500);
+  }
+
+  prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
+  root.addEventListener('mouseenter', () => clearInterval(timer));
+  root.addEventListener('mouseleave', restart);
+
+  restart();
+})();
+
 // ---- 3. Acordeón de FAQ ----
 (function () {
   const items = document.querySelectorAll('.faq-item');
@@ -83,6 +135,40 @@
 
   btn.addEventListener('click', () => {
     (toc || document.body).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+
+// ---- 3c. Carruseles de fotos por sección ----
+(function () {
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach((car) => {
+    const track = car.querySelector('.carousel-track');
+    const prev = car.querySelector('.carousel-btn.prev');
+    const next = car.querySelector('.carousel-btn.next');
+    const counter = car.querySelector('.carousel-counter .current');
+    const slides = car.querySelectorAll('.carousel-slide');
+    if (!track || slides.length === 0) return;
+
+    function goTo(index) {
+      const clamped = Math.max(0, Math.min(index, slides.length - 1));
+      track.scrollTo({ left: clamped * track.clientWidth, behavior: 'smooth' });
+    }
+
+    prev && prev.addEventListener('click', () => {
+      goTo(Math.round(track.scrollLeft / track.clientWidth) - 1);
+    });
+    next && next.addEventListener('click', () => {
+      goTo(Math.round(track.scrollLeft / track.clientWidth) + 1);
+    });
+
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const idx = Math.round(track.scrollLeft / track.clientWidth);
+        if (counter) counter.textContent = idx + 1;
+      }, 80);
+    });
   });
 })();
 
