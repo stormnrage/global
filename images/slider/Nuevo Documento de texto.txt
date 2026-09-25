@@ -1,0 +1,91 @@
+item 1 : MT.61.ML.01 Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 5151 4800 4987
+cilindro 2 : 4675 4430 4770
+cilindro 3 : 4760 4837 4812
+cilindro 4 : 4309 4294 4149
+
+item 2 : MT.61.30.03 alimentacion 10kg Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 5170 4663 4723
+cilindro 2 : 4950 5696 4609
+cilindro 3 : 5238 4696 4489
+
+item 3 : MT.61.30.04 alimentacion 10kg Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 4592 4587 4856
+cilindro 2 : 4794 5414 5344
+cilindro 3 : 4420 5068 5717
+cilindro 4 : 5050 4870 4955
+
+item 4 : alimentacion 10kg Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 5616 5008 5178
+cilindro 2 : 4916 4453 4673
+cilindro 3 : 4775 4610 5058
+
+item 5 : alimentacion 10kg Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 4705 4114 4620
+cilindro 2 : 4070 4484 4817
+cilindro 3 : 5412 4523 5080
+cilindro 4 : 4040 5170 5006
+
+item 6 : ica 1 Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 4957 5258 4646
+cilindro 2 : 5472 5087 4760
+cilindro 3 : 4803 4870 5274
+
+item 7 : ica 1-b Cilindros de 190mm x 25 de diametro. separacion entre imanes 25mm
+
+cilindro 1 : 5700 4860 5800
+cilindro 2 : 5288 5313 4930
+cilindro 3 : 4640 4607 5804
+cilindro 4 : 5615 5298 5081
+
+item 8 : ica 3. Cilindros de 230mm, separacion entre cilindros 15mm
+
+superior
+cilindro 1 : 3643 2970 3973
+cilindro 2 : 2690 3700 3635
+cilindro 3 : 3390 2800 2730
+
+inferior 
+cilindro 1 : 3660 3070 3240
+cilindro 2 : 3450 3259 3081
+cilindro 3 : 3270 3890 3543
+cilindro 4 : 3599 3240 3362
+
+
+item 9 : Tecmar 2 cilindros de 300mm x 25mm de diametro separacion entre cilindros 25mm y 41mm con el del centro. Diametro de la trampa 155mm
+
+cilindro 1 : 4070 4525 4355	
+cilindro 2 : 5220 5018 4938
+cilindro 3 : 5140 5291 5312
+cilindro 4 : 5292 5170 5058
+cilindro 5 : 5250 5343 5266
+cilindro 6 : 4399 5147 4784
+cilindro 7 : 5085 5533 5147
+cilindro 8 : 5400 6012 5120
+cilindro 9 : 4857 4785 4862
+
+item 10 : tecmar 1 y 3 cilindros de 240mm x 25mm de diametro separacion entre cilindros 25mm y 41mm con el del centro. Diametro de la trampa 155mm
+
+cilindro 1 : 5140 5476 5715
+cilindro 2 : 5384 5010 5740
+cilindro 3 : 5330 5620 5220
+cilindro 4 : 5349 5721 5234
+cilindro 5 : 5120 5370 5970
+cilindro 6 : 5530 5405 5546
+cilindro 7 : 5650 5373 5510
+cilindro 8 : 5727 5553 5300
+cilindro 9 : 5485 5305 5809
+
+item 11 : envase fresa, pasa soda a 80 grados, trampa para liquidos. cilindros de 150mm de largo x 25mm de diametro. separacion entre cilindos 43mm y 14mm
+
+cilindro 1 : 4370 4321
+cilindro 2 : 4547 4358
+cilindro 3 : 4648 4502
+cilindro 4 : 4148 4100
+cilindro 5 : 4364 4278 
