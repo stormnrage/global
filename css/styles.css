@@ -435,11 +435,11 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--blue-500);
   background: var(--blue-050);
   border: 1px solid var(--line);
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 100px;
   margin-bottom: 24px;
   font-weight: 600;
@@ -588,7 +588,11 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
 
 /* Estilo especial para la frase destacada */
 .frase-destacada {
+  font-family: 'Lora', serif;
   font-style: italic; /* Letras inclinadas */
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--ink);
   text-indent: 28px;  /* Espacio al inicio (sangría) */
 }
 
@@ -759,6 +763,22 @@ footer {
   font-weight: 500;
   text-transform: none;
   max-width: 280px;
+  margin: 0;
+}
+
+.foot-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.foot-brand-name {
+  font-family: 'Barlow Condensed';
+  font-weight: 800;
+  font-size: 27px;
+  letter-spacing: .01em;
+  text-transform: none;
+  color: var(--ink);
   margin: 0;
 }
 

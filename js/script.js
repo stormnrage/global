@@ -150,8 +150,8 @@
     if (!track || slides.length === 0) return;
 
     function goTo(index) {
-      const clamped = Math.max(0, Math.min(index, slides.length - 1));
-      track.scrollTo({ left: clamped * track.clientWidth, behavior: 'smooth' });
+      const wrapped = (index + slides.length) % slides.length;
+      track.scrollTo({ left: wrapped * track.clientWidth, behavior: 'smooth' });
     }
 
     prev && prev.addEventListener('click', () => {
@@ -169,6 +169,33 @@
         if (counter) counter.textContent = idx + 1;
       }, 80);
     });
+
+    // Avance automático: pasa de foto solo cada 4s, se pausa al pasar el mouse
+    // o mientras el carrusel no está visible en pantalla.
+    if (slides.length > 1) {
+      let timer;
+      let visible = false;
+
+      function start() {
+        clearInterval(timer);
+        timer = setInterval(() => {
+          goTo(Math.round(track.scrollLeft / track.clientWidth) + 1);
+        }, 4000);
+      }
+      function stop() { clearInterval(timer); }
+
+      car.addEventListener('mouseenter', stop);
+      car.addEventListener('mouseleave', () => { if (visible) start(); });
+      car.addEventListener('touchstart', stop, { passive: true });
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          visible = entry.isIntersecting;
+          if (visible) start(); else stop();
+        });
+      }, { threshold: 0.35 });
+      io.observe(car);
+    }
   });
 })();
 
