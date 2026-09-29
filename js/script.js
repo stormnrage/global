@@ -217,20 +217,29 @@
   function obtenerSaludo() {
     const hora = new Date().getHours();
     if (hora >= 6 && hora < 12) {
-      return "Hola, buenos días";
+      return "Buenos días";
     } else if (hora >= 12 && hora < 20) {
-      return "Hola, buenas tardes";
+      return "Buenas tardes";
     } else {
-      return "Hola, buenas noches";
+      return "Buenas noches";
     }
   }
 
   // Se asigna a window para poder llamarla desde cualquier HTML con un onclick
-  window.abrirWhatsApp = function (consulta = "queria consultar sobre imanes") {
+  window.abrirWhatsApp = function (consulta = "hacer una consulta") {
     const saludo = obtenerSaludo();
-    const texto = `${saludo}, ${consulta}.`;
+    const texto = `${saludo}, quería consultar por ${consulta}.`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(texto)}`;
     
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  // Mensaje genérico: "Hola, buenos días/tardes/noches, quería hacer una consulta sobre imanes."
+  window.abrirWhatsAppGenerico = function () {
+    const saludo = obtenerSaludo().toLowerCase();
+    const texto = `Hola, ${saludo}, quería hacer una consulta sobre imanes.`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(texto)}`;
+
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 })();
