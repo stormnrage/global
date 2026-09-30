@@ -1599,6 +1599,10 @@ html[data-theme="oscuro"] .contact-map-big iframe {
   scroll-margin-top: 90px;
 }
 
+.usage-block > div {
+  min-width: 0;
+}
+
 .usage-block:last-child {
   border-bottom: 1px solid var(--line);
 }
