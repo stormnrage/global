@@ -936,6 +936,8 @@ html[data-theme="oscuro"] .foot-map iframe {
   overflow: hidden;
   background: var(--card, #f4f5f7);
   border: 1px solid var(--border, rgba(0,0,0,.08));
+  width: 500px;
+  max-width: 100%;
 }
 
 .carousel-track {
@@ -951,7 +953,9 @@ html[data-theme="oscuro"] .foot-map iframe {
 .carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
-  aspect-ratio: 5 / 3;
+  width: 500px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
