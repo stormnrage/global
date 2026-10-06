@@ -260,6 +260,32 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
   }
 }
 
+.company-intro {
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0;
+}
+
+.company-intro .wrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.company-intro-title {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.company-intro p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 640px;
+}
+
 .hero-slider {
   position: relative;
   height: 440px;
@@ -312,6 +338,10 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
 .slide:nth-child(4) { filter: hue-rotate(38deg) saturate(1.15); }
 .slide:nth-child(5) { filter: hue-rotate(-32deg) saturate(1.1); }
 .slide:nth-child(6) { filter: hue-rotate(55deg); }
+.slide:nth-child(7) { filter: hue-rotate(-45deg) saturate(1.1); }
+.slide:nth-child(8) { filter: hue-rotate(70deg); }
+.slide:nth-child(9) { filter: hue-rotate(-60deg) saturate(1.15); }
+.slide:nth-child(10) { filter: hue-rotate(90deg); }
 
 .slide-icon {
   position: relative;
@@ -622,35 +652,49 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
 }
 
 .card {
-  background: var(--panel);
+  position: relative;
+  isolation: isolate;
+  min-height: 230px;
   padding: 28px 24px;
-  transition: .15s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .card:hover {
-  background: var(--blue-050);
+  transform: scale(1.045);
+  z-index: 2;
+  box-shadow: 0 16px 40px var(--shadow);
+}
+
+.card-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform .5s ease;
+}
+
+.card:hover .card-photo {
+  transform: scale(1.1);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,20,34,.25) 0%, rgba(6,20,34,.78) 100%);
+  z-index: -1;
 }
 
 .card .idx {
   font-family: 'IBM Plex Mono';
   font-size: 13px;
-  color: var(--muted);
-}
-
-.card-photo {
-  display: block;
-  width: 58px;
-  height: 58px;
-  border-radius: 100px;
-  object-fit: cover;
-  border: 1px solid var(--line);
-  margin: 15px 0 13px;
-  transition: transform .35s ease;
-}
-
-.card:hover .card-photo {
-  transform: scale(1.35);
+  color: rgba(255,255,255,.75);
 }
 
 .card h3 {
@@ -660,11 +704,11 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
   font-size: 17px;
   letter-spacing: 0;
   margin-bottom: 7px;
-  color: var(--ink);
+  color: #fff;
 }
 
 .card p {
-  color: var(--muted);
+  color: rgba(255,255,255,.85);
   font-size: 14.5px;
 }
 
@@ -726,6 +770,10 @@ footer {
   transition: background .2s;
 }
 
+html[data-theme="claro"] footer {
+  background: var(--panel-2);
+}
+
 .foot-main {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
@@ -785,11 +833,11 @@ footer {
 }
 
 .foot-brand-name {
-  font-family: 'Barlow Condensed';
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 1;
-  letter-spacing: .01em;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -.01em;
   text-transform: none;
   color: var(--ink);
   margin: 0;
@@ -843,12 +891,18 @@ footer {
 
 .foot-contact-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
   font-size: 14.5px;
   color: var(--muted);
   overflow-wrap: anywhere;
   min-width: 0;
+}
+
+@media(max-width:560px) {
+  .foot-contact-row {
+    flex-wrap: wrap;
+  }
 }
 
 .foot-contact-row .ic {
