@@ -274,6 +274,11 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
 }
 
 .company-intro-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .98;
+  color: var(--ink);
   font-size: 26px;
   margin-bottom: 8px;
 }
@@ -375,7 +380,10 @@ html[data-theme="oscuro"] .theme-toggle .bulb-fill {
   margin-bottom: 10px;
 }
 
-.slide-text h2 {
+.slide-text .slide-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
   color: #fff;
   font-size: clamp(24px, 3.6vw, 38px);
   line-height: 1.15;
@@ -773,7 +781,8 @@ footer {
 }
 
 html[data-theme="claro"] footer {
-  background: var(--panel-2);
+  background: #D3E2F1;
+  --line: #B4C9DE;
 }
 
 .foot-main {
@@ -1375,8 +1384,20 @@ html[data-theme="oscuro"] .contact-map-big iframe {
 }
 
 .offer-card {
+  display: block;
   background: var(--panel);
   padding: 22px;
+  text-decoration: none;
+  color: inherit;
+  transition: background .15s;
+}
+
+a.offer-card:hover {
+  background: var(--blue-050);
+}
+
+a.offer-card:hover h4 {
+  color: var(--blue-500);
 }
 
 .offer-card .chip {
