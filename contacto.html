@@ -20,7 +20,7 @@
 <div class="banner-wrap">
   <picture>
     <source media="(max-width: 560px)" srcset="images/banner-mobile.jpg">
-    <img src="images/banner.jpg" alt="Imanes Globaltek - Venta y distribución de imanes de neodimio, trampas y soluciones magnéticas para la industria">
+    <img src="images/banner.jpg" alt="Imanes Globaltek - Venta y distribución de imanes de neodimio, ferrite y productos magnéticos">
   </picture>
 </div>
 
@@ -73,12 +73,17 @@
     <div class="contact-grid">
       <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <div class="field"><label for="nombre">Nombre</label><input id="nombre" type="text" placeholder="Tu nombre" required></div>
-          <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="tu@email.com" required></div>
+          <div class="field"><label for="nombre">Nombre</label><input id="nombre" name="Nombre" type="text" placeholder="Tu nombre" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="tu@email.com" required></div>
         </div>
-        <div class="field"><label for="asunto">Asunto</label><input id="asunto" type="text" placeholder="¿En qué te podemos ayudar?"></div>
-        <div class="field"><label for="mensaje">Mensaje</label><textarea id="mensaje" placeholder="Contanos qué necesitás..." required></textarea></div>
+        <div class="form-row">
+          <div class="field"><label for="telefono">Teléfono (opcional)</label><input id="telefono" name="Telefono" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+()\s\-]{6,20}" title="Ingresá un número válido, solo números, espacios, + o guiones" placeholder="11 1234 5678"></div>
+          <div class="field"><label for="asunto">Asunto</label><input id="asunto" name="Asunto" type="text" placeholder="¿En qué te podemos ayudar?"></div>
+        </div>
+        <div class="field"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="Mensaje" placeholder="Contanos qué necesitás..." required></textarea></div>
+        <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="form-submit" type="submit">Enviar consulta</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         <p class="form-note">Le responderemos a la brevedad por correo electrónico o WhatsApp.</p>
       </form>
 

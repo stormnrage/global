@@ -199,14 +199,66 @@
   });
 })();
 
-// ---- 4. Formulario de Contacto (Mockup) ----
+// ---- 4. Formulario de Contacto (envío real vía FormSubmit) ----
 (function () {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', (event) => {
+  // Mail que recibe las consultas. Para cambiarlo, solo editá esta línea.
+  const DESTINO = 'consultas@globaltekshop.com';
+  const status = document.getElementById('formStatus');
+  const boton = form.querySelector('.form-submit');
+
+  function mostrar(texto, tipo) {
+    status.textContent = texto;
+    status.className = 'form-status ' + tipo;
+  }
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    alert('Formulario de ejemplo — falta conectar con el envío real de email.');
+
+    // Anti-spam: si el campo oculto viene completo, es un bot. Se descarta sin avisar.
+    if (form.elements['_honey'].value) {
+      form.reset();
+      return;
+    }
+
+    const datos = {
+      Nombre: form.elements['Nombre'].value.trim(),
+      email: form.elements['email'].value.trim(),
+      'Teléfono': form.elements['Telefono'].value.trim() || 'No indicado',
+      Asunto: form.elements['Asunto'].value.trim(),
+      Mensaje: form.elements['Mensaje'].value.trim(),
+      _subject: 'Nueva consulta desde la web: ' + (form.elements['Asunto'].value.trim() || 'sin asunto'),
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    boton.disabled = true;
+    const textoOriginal = boton.textContent;
+    boton.textContent = 'Enviando...';
+    status.className = 'form-status';
+    status.textContent = '';
+
+    try {
+      const respuesta = await fetch('https://formsubmit.co/ajax/' + DESTINO, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+      const resultado = await respuesta.json();
+      if (respuesta.ok && String(resultado.success) === 'true') {
+        mostrar('¡Gracias! Recibimos tu consulta y te vamos a responder a la brevedad.', 'ok');
+        form.reset();
+      } else {
+        throw new Error('envio_fallido');
+      }
+    } catch (error) {
+      mostrar('No pudimos enviar tu consulta. Probá de nuevo en unos minutos o escribinos por WhatsApp.', 'error');
+    } finally {
+      boton.disabled = false;
+      boton.textContent = textoOriginal;
+    }
   });
 })();
 

@@ -1319,6 +1319,37 @@ html[data-theme="oscuro"] .foot-map iframe {
   color: var(--muted);
 }
 
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.form-submit:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.form-status {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.ok {
+  color: #1d7a46;
+}
+
+.form-status.error {
+  color: #b3261e;
+}
+
 .contact-map-big {
   border-radius: 10px;
   overflow: hidden;
